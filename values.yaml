@@ -1,0 +1,41 @@
+kubeApiServer:
+  enabled: false
+kubeControllerManager:
+  enabled: false
+kubeEtcd:
+  enabled: false
+coreDns:
+  enabled: false
+kubelet:
+  enabled: true
+nodeExporter:
+  enabled: true
+kubeProxy:
+  enabled: false
+kubeScheduler:
+  enabled: false
+prometheus:
+  prometheusSpec:
+    remoteWriteDashboards: false
+grafana:
+  enabled: true
+  defaultDashboardsEnabled: true
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      labelValue: "1"
+      multicluster:
+        global:
+          enabled: true
+      annotations:
+        findi.io/folder: findi
+    datasources:
+      defaultDatasourceEnabled: true
+      url: http://asfa
+      loki: http://asdfas
+      label: grafana_dashboard
+      # value of label that the configmaps with dashboards are set to
+      labelValue: ""
+      annotations:
+        asdfasd: asdfas
