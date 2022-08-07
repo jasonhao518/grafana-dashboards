@@ -19,6 +19,7 @@ prometheus:
     remoteWriteDashboards: false
 grafana:
   enabled: true
+#  namespaceOverride: monitoring
   defaultDashboardsEnabled: true
   sidecar:
     dashboards:
@@ -34,8 +35,8 @@ grafana:
       enabled: true
       uid: prometheus
       defaultDatasourceEnabled: true
-      url: http://asfa
-      loki: http://asdfas
+      url: http://prometheus-mimir-query-frontend.monitoring.svc.cluster.local:8080/prometheus
+      loki: http://prometheus-loki-distributed-gateway.monitoring.svc.cluster.local
       label: grafana_datasource
       # value of label that the configmaps with dashboards are set to
       labelValue: "1"

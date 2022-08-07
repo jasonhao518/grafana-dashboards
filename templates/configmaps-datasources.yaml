@@ -22,23 +22,43 @@ data:
     datasources:
 {{- $scrapeInterval := .Values.grafana.sidecar.datasources.defaultDatasourceScrapeInterval | default .Values.prometheus.prometheusSpec.scrapeInterval | default "30s" }}
 {{- if .Values.grafana.sidecar.datasources.defaultDatasourceEnabled }}
-    - name: {{ template "kube-prometheus-stack.fullname" . }}-Prometheus
+    - name: {{ .Release.Namespace }}-prometheus
       type: prometheus
-      uid: {{ .Values.grafana.sidecar.datasources.uid }}
+      uid: {{ .Release.Namespace }}-prometheus
       {{- if .Values.grafana.sidecar.datasources.url }}
       url: {{ .Values.grafana.sidecar.datasources.url }}
       {{- else }}
       url: http://{{ template "kube-prometheus-stack.fullname" . }}-prometheus.{{ template "kube-prometheus-stack.namespace" . }}:{{ .Values.prometheus.service.port }}/{{ trimPrefix "/" .Values.prometheus.prometheusSpec.routePrefix }}
       {{- end }}
       access: proxy
-      isDefault: true
+      isDefault: false
+      secureJsonData:
+        httpHeaderValue1: '{{ .Release.Namespace }}'
       jsonData:
+        httpHeaderName1: 'X-Scope-OrgId'
         timeInterval: {{ $scrapeInterval }}
 {{- if .Values.grafana.sidecar.datasources.exemplarTraceIdDestinations }}
         exemplarTraceIdDestinations:
         - datasourceUid: {{ .Values.grafana.sidecar.datasources.exemplarTraceIdDestinations.datasourceUid }}
           name: {{ .Values.grafana.sidecar.datasources.exemplarTraceIdDestinations.traceIdLabelName }}
 {{- end }}
+    - name: {{ .Release.Namespace }}-loki
+      type: loki
+      uid: {{ .Release.Namespace }}-loki
+      url: {{ .Values.grafana.sidecar.datasources.loki }}
+      access: proxy
+      isDefault: false
+      secureJsonData:
+        httpHeaderValue1: '{{ .Release.Namespace }}'
+      jsonData:
+        httpHeaderName1: 'X-Scope-OrgId'
+        timeInterval: {{ $scrapeInterval }}
+{{- if .Values.grafana.sidecar.datasources.exemplarTraceIdDestinations }}
+        exemplarTraceIdDestinations:
+        - datasourceUid: {{ .Values.grafana.sidecar.datasources.exemplarTraceIdDestinations.datasourceUid }}
+          name: {{ .Values.grafana.sidecar.datasources.exemplarTraceIdDestinations.traceIdLabelName }}
+{{- end }}
+
 {{- if .Values.grafana.sidecar.datasources.createPrometheusReplicasDatasources }}
 {{- range until (int .Values.prometheus.prometheusSpec.replicas) }}
     - name: Prometheus-{{ . }}
