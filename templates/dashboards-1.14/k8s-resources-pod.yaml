@@ -2346,7 +2346,7 @@ data:
                     ],
                     "query": "prometheus",
                     "refresh": 1,
-                    "regex": "",
+                    "regex": "{{ template "kube-prometheus-stack.fullname" . }}\\-prometheus",
                     "type": "datasource"
                 },
                 {
@@ -2364,7 +2364,7 @@ data:
                     "options": [
 
                     ],
-                    "query": "label_values(up{job=\"kube-state-metrics\"}, cluster)",
+                    "query": "label_values(kube_secret_info{job=\"kube-state-metrics\"}, cluster)",
                     "refresh": 2,
                     "regex": "",
                     "sort": 1,

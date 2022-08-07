@@ -1035,7 +1035,7 @@ data:
                     "options": [
 
                     ],
-                    "query": "label_values(up{job=\"kube-scheduler\"}, cluster)",
+                    "query": "label_values(kube_secret_info{job=\"kube-scheduler\"}, cluster)",
                     "refresh": 2,
                     "regex": "",
                     "sort": 1,
@@ -1061,7 +1061,7 @@ data:
                     "options": [
 
                     ],
-                    "query": "label_values(up{job=\"kube-scheduler\", cluster=\"$cluster\"}, instance)",
+                    "query": "label_values(kube_secret_info{job=\"kube-scheduler\", cluster=\"$cluster\"}, instance)",
                     "refresh": 2,
                     "regex": "",
                     "sort": 1,

@@ -2177,7 +2177,7 @@ data:
                     "options": [
 
                     ],
-                    "query": "label_values(up{job=\"kubelet\", metrics_path=\"/metrics\"}, cluster)",
+                    "query": "label_values(kube_secret_info{job=\"kubelet\", metrics_path=\"/metrics\"}, cluster)",
                     "refresh": 2,
                     "regex": "",
                     "sort": 1,
@@ -2203,7 +2203,7 @@ data:
                     "options": [
 
                     ],
-                    "query": "label_values(up{job=\"kubelet\", metrics_path=\"/metrics\",cluster=\"$cluster\"}, instance)",
+                    "query": "label_values(kube_secret_info{job=\"kubelet\", metrics_path=\"/metrics\",cluster=\"$cluster\"}, instance)",
                     "refresh": 2,
                     "regex": "",
                     "sort": 1,

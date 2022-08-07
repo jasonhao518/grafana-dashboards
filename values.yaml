@@ -31,11 +31,13 @@ grafana:
       annotations:
         findi.io/folder: findi
     datasources:
+      enabled: true
+      uid: prometheus
       defaultDatasourceEnabled: true
       url: http://asfa
       loki: http://asdfas
-      label: grafana_dashboard
+      label: grafana_datasource
       # value of label that the configmaps with dashboards are set to
-      labelValue: ""
+      labelValue: "1"
       annotations:
         asdfasd: asdfas

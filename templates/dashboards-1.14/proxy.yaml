@@ -1194,7 +1194,7 @@ data:
                     "options": [
 
                     ],
-                    "query": "label_values(up{job=\"kube-proxy\"}, cluster)",
+                    "query": "label_values(kube_secret_info{job=\"kube-proxy\"}, cluster)",
                     "refresh": 2,
                     "regex": "",
                     "sort": 1,
@@ -1220,7 +1220,7 @@ data:
                     "options": [
 
                     ],
-                    "query": "label_values(up{job=\"kube-proxy\", cluster=\"$cluster\", job=\"kube-proxy\"}, instance)",
+                    "query": "label_values(kube_secret_info{job=\"kube-proxy\", cluster=\"$cluster\", job=\"kube-proxy\"}, instance)",
                     "refresh": 2,
                     "regex": "",
                     "sort": 1,
