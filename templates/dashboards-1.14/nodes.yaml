@@ -11,6 +11,7 @@ metadata:
   namespace: {{ template "kube-prometheus-stack-grafana.namespace" . }}
   name: {{ printf "%s-%s" (include "kube-prometheus-stack.fullname" $) "nodes" | trunc 63 | trimSuffix "-" }}
   annotations:
+    findi.io/folder: {{.Release.Namespace}}
 {{ toYaml .Values.grafana.sidecar.dashboards.annotations | indent 4 }}
   labels:
     {{- if $.Values.grafana.sidecar.dashboards.label }}
@@ -53,7 +54,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -146,7 +147,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 0,
                         "fillGradient": 0,
                         "gridPos": {
@@ -273,7 +274,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -381,7 +382,7 @@ data:
                         ]
                     },
                     {
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fieldConfig": {
                             "defaults": {
                                 "max": 100,
@@ -442,7 +443,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 0,
                         "fillGradient": 0,
                         "gridPos": {
@@ -550,7 +551,7 @@ data:
                         ]
                     },
                     {
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fieldConfig": {
                             "defaults": {
                                 "custom": {
@@ -788,7 +789,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 0,
                         "fillGradient": 0,
                         "gridPos": {
@@ -881,7 +882,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 0,
                         "fillGradient": 0,
                         "gridPos": {
@@ -989,7 +990,7 @@ data:
                     "current": {
 
                     },
-                    "datasource": "{{ .Values.datasource.prometheus.name }}",
+                    "datasource": "{{ .Release.Namespace }}-prometheus",
                     "hide": 0,
                     "includeAll": false,
                     "label": "Instance",

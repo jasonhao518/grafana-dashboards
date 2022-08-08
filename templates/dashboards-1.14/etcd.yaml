@@ -11,6 +11,7 @@ metadata:
   namespace: {{ template "kube-prometheus-stack-grafana.namespace" . }}
   name: {{ printf "%s-%s" (include "kube-prometheus-stack.fullname" $) "etcd" | trunc 63 | trimSuffix "-" }}
   annotations:
+    findi.io/folder: {{.Release.Namespace}}
 {{ toYaml .Values.grafana.sidecar.dashboards.annotations | indent 4 }}
   labels:
     {{- if $.Values.grafana.sidecar.dashboards.label }}
@@ -45,7 +46,7 @@ data:
                             "rgba(237, 129, 40, 0.89)",
                             "rgba(50, 172, 45, 0.97)"
                         ],
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "editable": true,
                         "error": false,
                         "format": "none",
@@ -118,7 +119,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "editable": true,
                         "error": false,
                         "fill": 0,
@@ -204,7 +205,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "editable": true,
                         "error": false,
                         "fill": 0,
@@ -297,7 +298,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "decimals": null,
                         "editable": true,
                         "error": false,
@@ -374,7 +375,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "editable": true,
                         "error": false,
                         "fill": 0,
@@ -457,7 +458,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "editable": true,
                         "error": false,
                         "fill": 0,
@@ -541,7 +542,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "editable": true,
                         "error": false,
                         "fill": 5,
@@ -617,7 +618,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "editable": true,
                         "error": false,
                         "fill": 5,
@@ -693,7 +694,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "editable": true,
                         "error": false,
                         "fill": 0,
@@ -769,7 +770,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "decimals": null,
                         "editable": true,
                         "error": false,
@@ -854,7 +855,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "editable": true,
                         "error": false,
                         "fill": 0,
@@ -953,7 +954,7 @@ data:
                     {
                         "aliasColors": {},
                         "bars": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "decimals": 0,
                         "editable": true,
                         "error": false,
@@ -1034,7 +1035,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "decimals": 0,
                         "editable": true,
                         "error": false,
@@ -1156,7 +1157,7 @@ data:
                         "text": "prod",
                         "value": "prod"
                     },
-                    "datasource": "{{ .Values.datasource.prometheus.name }}",
+                    "datasource": "{{ .Release.Namespace }}-prometheus",
                     "hide": {{ if (or .Values.grafana.sidecar.dashboards.multicluster.global.enabled .Values.grafana.sidecar.dashboards.multicluster.etcd.enabled) }}0{{ else }}2{{ end }},
                     "includeAll": false,
                     "label": "cluster",

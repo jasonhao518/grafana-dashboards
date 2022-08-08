@@ -17,11 +17,6 @@ kubeScheduler:
 prometheus:
   prometheusSpec:
     remoteWriteDashboards: false
-datasource:
-  prometheus:
-    name: jason123-prometheus
-  loki:
-    name: jason123-loki
 grafana:
   enabled: true
 #  namespaceOverride: monitoring
@@ -35,7 +30,7 @@ grafana:
         global:
           enabled: true
       annotations:
-        findi.io/folder: jason123
+        findi.io/app: dashbords
     datasources:
       enabled: true
       uid: prometheus
@@ -46,4 +41,4 @@ grafana:
       # value of label that the configmaps with dashboards are set to
       labelValue: "1"
       annotations:
-        asdfasd: asdfas
+        findi.io/app: dashbords

@@ -11,6 +11,7 @@ metadata:
   namespace: {{ template "kube-prometheus-stack-grafana.namespace" . }}
   name: {{ printf "%s-%s" (include "kube-prometheus-stack.fullname" $) "k8s-resources-node" | trunc 63 | trimSuffix "-" }}
   annotations:
+    findi.io/folder: {{.Release.Namespace}}
 {{ toYaml .Values.grafana.sidecar.dashboards.annotations | indent 4 }}
   labels:
     {{- if $.Values.grafana.sidecar.dashboards.label }}
@@ -46,7 +47,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 10,
                         "id": 1,
                         "interval": "1m",
@@ -165,7 +166,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 1,
                         "id": 2,
                         "interval": "1m",
@@ -441,7 +442,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 10,
                         "id": 3,
                         "interval": "1m",
@@ -560,7 +561,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 1,
                         "id": 4,
                         "interval": "1m",
@@ -923,7 +924,7 @@ data:
                         "text": "",
                         "value": ""
                     },
-                    "datasource": "{{ .Values.datasource.prometheus.name }}",
+                    "datasource": "{{ .Release.Namespace }}-prometheus",
                     "hide": {{ if .Values.grafana.sidecar.dashboards.multicluster.global.enabled }}0{{ else }}2{{ end }},
                     "includeAll": false,
                     "label": null,
@@ -950,7 +951,7 @@ data:
                         "text": "",
                         "value": ""
                     },
-                    "datasource": "{{ .Values.datasource.prometheus.name }}",
+                    "datasource": "{{ .Release.Namespace }}-prometheus",
                     "hide": 0,
                     "includeAll": false,
                     "label": null,

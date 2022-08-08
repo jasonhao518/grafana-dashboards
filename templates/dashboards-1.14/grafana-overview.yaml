@@ -11,6 +11,7 @@ metadata:
   namespace: {{ template "kube-prometheus-stack-grafana.namespace" . }}
   name: {{ printf "%s-%s" (include "kube-prometheus-stack.fullname" $) "grafana-overview" | trunc 63 | trimSuffix "-" }}
   annotations:
+    findi.io/folder: {{.Release.Namespace}}
 {{ toYaml .Values.grafana.sidecar.dashboards.annotations | indent 4 }}
   labels:
     {{- if $.Values.grafana.sidecar.dashboards.label }}
@@ -52,7 +53,7 @@ data:
         ],
         "panels": [
             {
-                "datasource": "{{ .Values.datasource.prometheus.name }}",
+                "datasource": "{{ .Release.Namespace }}-prometheus",
                 "fieldConfig": {
                     "defaults": {
                         "mappings": [
@@ -117,7 +118,7 @@ data:
                 "type": "stat"
             },
             {
-                "datasource": "{{ .Values.datasource.prometheus.name }}",
+                "datasource": "{{ .Release.Namespace }}-prometheus",
                 "fieldConfig": {
                     "defaults": {
                         "mappings": [
@@ -180,7 +181,7 @@ data:
                 "type": "stat"
             },
             {
-                "datasource": "{{ .Values.datasource.prometheus.name }}",
+                "datasource": "{{ .Release.Namespace }}-prometheus",
                 "fieldConfig": {
                     "defaults": {
                         "custom": {
@@ -280,7 +281,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "{{ .Values.datasource.prometheus.name }}",
+                "datasource": "{{ .Release.Namespace }}-prometheus",
                 "fieldConfig": {
                     "defaults": {
                         "links": [
@@ -391,7 +392,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "{{ .Values.datasource.prometheus.name }}",
+                "datasource": "{{ .Release.Namespace }}-prometheus",
                 "fieldConfig": {
                     "defaults": {
                         "links": [
@@ -552,7 +553,7 @@ data:
                             "default/grafana"
                         ]
                     },
-                    "datasource": "{{ .Values.datasource.prometheus.name }}",
+                    "datasource": "{{ .Release.Namespace }}-prometheus",
                     "definition": "label_values(grafana_build_info, job)",
                     "description": null,
                     "error": null,
@@ -584,7 +585,7 @@ data:
                         "text": "All",
                         "value": "$__all"
                     },
-                    "datasource": "{{ .Values.datasource.prometheus.name }}",
+                    "datasource": "{{ .Release.Namespace }}-prometheus",
                     "definition": "label_values(grafana_build_info, instance)",
                     "description": null,
                     "error": null,

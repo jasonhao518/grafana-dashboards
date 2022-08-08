@@ -11,6 +11,7 @@ metadata:
   namespace: {{ template "kube-prometheus-stack-grafana.namespace" . }}
   name: {{ printf "%s-%s" (include "kube-prometheus-stack.fullname" $) "namespace-by-pod" | trunc 63 | trimSuffix "-" }}
   annotations:
+    findi.io/folder: {{.Release.Namespace}}
 {{ toYaml .Values.grafana.sidecar.dashboards.annotations | indent 4 }}
   labels:
     {{- if $.Values.grafana.sidecar.dashboards.label }}
@@ -79,7 +80,7 @@ data:
                     "rgba(237, 129, 40, 0.89)",
                     "#d44a3a"
                 ],
-                "datasource": "{{ .Values.datasource.prometheus.name }}",
+                "datasource": "{{ .Release.Namespace }}-prometheus",
                 "decimals": 0,
                 "format": "time_series",
                 "gauge": {
@@ -206,7 +207,7 @@ data:
                     "rgba(237, 129, 40, 0.89)",
                     "#d44a3a"
                 ],
-                "datasource": "{{ .Values.datasource.prometheus.name }}",
+                "datasource": "{{ .Release.Namespace }}-prometheus",
                 "decimals": 0,
                 "format": "time_series",
                 "gauge": {
@@ -359,7 +360,7 @@ data:
                         "value": "pod"
                     }
                 ],
-                "datasource": "{{ .Values.datasource.prometheus.name }}",
+                "datasource": "{{ .Release.Namespace }}-prometheus",
                 "fill": 1,
                 "fontSize": "100%",
                 "gridPos": {
@@ -620,7 +621,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "{{ .Values.datasource.prometheus.name }}",
+                "datasource": "{{ .Release.Namespace }}-prometheus",
                 "fill": 2,
                 "fillGradient": 0,
                 "gridPos": {
@@ -721,7 +722,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "{{ .Values.datasource.prometheus.name }}",
+                "datasource": "{{ .Release.Namespace }}-prometheus",
                 "fill": 2,
                 "fillGradient": 0,
                 "gridPos": {
@@ -833,7 +834,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 2,
                         "fillGradient": 0,
                         "gridPos": {
@@ -934,7 +935,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 2,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1055,7 +1056,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 2,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1156,7 +1157,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "{{ .Values.datasource.prometheus.name }}",
+                        "datasource": "{{ .Release.Namespace }}-prometheus",
                         "fill": 2,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1276,7 +1277,7 @@ data:
                     "current": {
 
                     },
-                    "datasource": "{{ .Values.datasource.prometheus.name }}",
+                    "datasource": "{{ .Release.Namespace }}-prometheus",
                     "hide": {{ if .Values.grafana.sidecar.dashboards.multicluster.global.enabled }}0{{ else }}2{{ end }},
                     "includeAll": false,
                     "label": null,
@@ -1306,7 +1307,7 @@ data:
                         "text": "kube-system",
                         "value": "kube-system"
                     },
-                    "datasource": "{{ .Values.datasource.prometheus.name }}",
+                    "datasource": "{{ .Release.Namespace }}-prometheus",
                     "definition": "label_values(container_network_receive_packets_total{cluster=\"$cluster\"}, namespace)",
                     "hide": 0,
                     "includeAll": true,
@@ -1338,7 +1339,7 @@ data:
                         "text": "5m",
                         "value": "5m"
                     },
-                    "datasource": "{{ .Values.datasource.prometheus.name }}",
+                    "datasource": "{{ .Release.Namespace }}-prometheus",
                     "hide": 0,
                     "includeAll": false,
                     "label": null,
@@ -1383,7 +1384,7 @@ data:
                         "text": "5m",
                         "value": "5m"
                     },
-                    "datasource": "{{ .Values.datasource.prometheus.name }}",
+                    "datasource": "{{ .Release.Namespace }}-prometheus",
                     "hide": 2,
                     "includeAll": false,
                     "label": null,
