@@ -73,7 +73,7 @@ data:
                             "rgba(237, 129, 40, 0.89)",
                             "#d44a3a"
                         ],
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "decimals": 3,
                         "description": "How many percent of requests (both read and write) in 30 days have been answered successfully and fast enough?",
                         "format": "percentunit",
@@ -161,7 +161,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "decimals": 3,
                         "description": "How much error budget is left looking at our 0.990% availability guarantees?",
                         "fill": 10,
@@ -274,7 +274,7 @@ data:
                             "rgba(237, 129, 40, 0.89)",
                             "#d44a3a"
                         ],
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "decimals": 3,
                         "description": "How many percent of read requests (LIST,GET) in 30 days have been answered successfully and fast enough?",
                         "format": "percentunit",
@@ -362,7 +362,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "description": "How many read requests (LIST,GET) per second do the apiservers get by code?",
                         "fill": 10,
                         "fillGradient": 0,
@@ -472,7 +472,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "description": "How many percent of read requests (LIST,GET) per second are returned with errors (5xx)?",
                         "fill": 1,
                         "fillGradient": 0,
@@ -567,7 +567,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "description": "How many seconds is the 99th percentile for reading (LIST|GET) a given resource?",
                         "fill": 1,
                         "fillGradient": 0,
@@ -677,7 +677,7 @@ data:
                             "rgba(237, 129, 40, 0.89)",
                             "#d44a3a"
                         ],
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "decimals": 3,
                         "description": "How many percent of write requests (POST|PUT|PATCH|DELETE) in 30 days have been answered successfully and fast enough?",
                         "format": "percentunit",
@@ -765,7 +765,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "description": "How many write requests (POST|PUT|PATCH|DELETE) per second do the apiservers get by code?",
                         "fill": 10,
                         "fillGradient": 0,
@@ -875,7 +875,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "description": "How many percent of write requests (POST|PUT|PATCH|DELETE) per second are returned with errors (5xx)?",
                         "fill": 1,
                         "fillGradient": 0,
@@ -970,7 +970,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "description": "How many seconds is the 99th percentile for writing (POST|PUT|PATCH|DELETE) a given resource?",
                         "fill": 1,
                         "fillGradient": 0,
@@ -1078,7 +1078,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1172,7 +1172,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1266,7 +1266,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1373,7 +1373,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1467,7 +1467,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1561,7 +1561,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1666,27 +1666,11 @@ data:
         "templating": {
             "list": [
                 {
-                    "current": {
-                        "text": "default",
-                        "value": "default"
-                    },
-                    "hide": 0,
-                    "label": "Data Source",
-                    "name": "datasource",
-                    "options": [
-
-                    ],
-                    "query": "prometheus",
-                    "refresh": 1,
-                    "regex": "",
-                    "type": "datasource"
-                },
-                {
                     "allValue": null,
                     "current": {
 
                     },
-                    "datasource": "$datasource",
+                    "datasource": "{{ .Values.datasource.prometheus.name }}",
                     "hide": {{ if .Values.grafana.sidecar.dashboards.multicluster.global.enabled }}0{{ else }}2{{ end }},
                     "includeAll": false,
                     "label": "cluster",
@@ -1712,7 +1696,7 @@ data:
                     "current": {
 
                     },
-                    "datasource": "$datasource",
+                    "datasource": "{{ .Values.datasource.prometheus.name }}",
                     "hide": 0,
                     "includeAll": true,
                     "label": null,

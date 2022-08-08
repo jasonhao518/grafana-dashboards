@@ -17,6 +17,11 @@ kubeScheduler:
 prometheus:
   prometheusSpec:
     remoteWriteDashboards: false
+datasource:
+  prometheus:
+    name: jason123-prometheus
+  loki:
+    name: jason123-loki
 grafana:
   enabled: true
 #  namespaceOverride: monitoring
@@ -30,7 +35,7 @@ grafana:
         global:
           enabled: true
       annotations:
-        findi.io/folder: findi
+        findi.io/folder: jason123
     datasources:
       enabled: true
       uid: prometheus

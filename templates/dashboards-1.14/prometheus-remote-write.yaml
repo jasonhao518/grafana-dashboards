@@ -53,7 +53,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -146,7 +146,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -252,7 +252,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -358,7 +358,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -452,7 +452,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -545,7 +545,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -638,7 +638,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -744,7 +744,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -837,7 +837,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -943,7 +943,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1036,7 +1036,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1142,7 +1142,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1235,7 +1235,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1328,7 +1328,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1421,7 +1421,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "fillGradient": 0,
                         "gridPos": {
@@ -1550,7 +1550,7 @@ data:
                             "value": "$__all"
                         }
                     },
-                    "datasource": "$datasource",
+                    "datasource": "{{ .Values.datasource.prometheus.name }}",
                     "hide": {{ if .Values.grafana.sidecar.dashboards.multicluster.global.enabled }}0{{ else }}2{{ end }},
                     "includeAll": true,
                     "label": null,
@@ -1585,7 +1585,7 @@ data:
                             "value": "$__all"
                         }
                     },
-                    "datasource": "$datasource",
+                    "datasource": "{{ .Values.datasource.prometheus.name }}",
                     "hide": 0,
                     "includeAll": true,
                     "label": null,
@@ -1611,7 +1611,7 @@ data:
                     "current": {
 
                     },
-                    "datasource": "$datasource",
+                    "datasource": "{{ .Values.datasource.prometheus.name }}",
                     "hide": 0,
                     "includeAll": true,
                     "label": null,

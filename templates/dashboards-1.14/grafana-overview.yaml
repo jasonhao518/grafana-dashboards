@@ -52,7 +52,7 @@ data:
         ],
         "panels": [
             {
-                "datasource": "$datasource",
+                "datasource": "{{ .Values.datasource.prometheus.name }}",
                 "fieldConfig": {
                     "defaults": {
                         "mappings": [
@@ -117,7 +117,7 @@ data:
                 "type": "stat"
             },
             {
-                "datasource": "$datasource",
+                "datasource": "{{ .Values.datasource.prometheus.name }}",
                 "fieldConfig": {
                     "defaults": {
                         "mappings": [
@@ -180,7 +180,7 @@ data:
                 "type": "stat"
             },
             {
-                "datasource": "$datasource",
+                "datasource": "{{ .Values.datasource.prometheus.name }}",
                 "fieldConfig": {
                     "defaults": {
                         "custom": {
@@ -280,7 +280,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "$datasource",
+                "datasource": "{{ .Values.datasource.prometheus.name }}",
                 "fieldConfig": {
                     "defaults": {
                         "links": [
@@ -391,7 +391,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
-                "datasource": "$datasource",
+                "datasource": "{{ .Values.datasource.prometheus.name }}",
                 "fieldConfig": {
                     "defaults": {
                         "links": [
@@ -552,7 +552,7 @@ data:
                             "default/grafana"
                         ]
                     },
-                    "datasource": "$datasource",
+                    "datasource": "{{ .Values.datasource.prometheus.name }}",
                     "definition": "label_values(grafana_build_info, job)",
                     "description": null,
                     "error": null,
@@ -584,7 +584,7 @@ data:
                         "text": "All",
                         "value": "$__all"
                     },
-                    "datasource": "$datasource",
+                    "datasource": "{{ .Values.datasource.prometheus.name }}",
                     "definition": "label_values(grafana_build_info, instance)",
                     "description": null,
                     "error": null,

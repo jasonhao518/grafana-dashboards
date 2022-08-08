@@ -46,7 +46,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "id": 1,
                         "legend": {
@@ -273,7 +273,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "id": 2,
                         "legend": {
@@ -359,7 +359,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 10,
                         "id": 3,
                         "legend": {
@@ -457,7 +457,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 1,
                         "id": 4,
                         "legend": {
@@ -543,7 +543,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 10,
                         "id": 5,
                         "legend": {
@@ -661,7 +661,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 10,
                         "id": 6,
                         "legend": {
@@ -759,7 +759,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 10,
                         "id": 7,
                         "legend": {
@@ -845,7 +845,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 10,
                         "id": 8,
                         "legend": {
@@ -943,7 +943,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 10,
                         "id": 9,
                         "legend": {
@@ -1029,7 +1029,7 @@ data:
                         "bars": false,
                         "dashLength": 10,
                         "dashes": false,
-                        "datasource": "$datasource",
+                        "datasource": "{{ .Values.datasource.prometheus.name }}",
                         "fill": 10,
                         "id": 10,
                         "legend": {
@@ -1125,29 +1125,13 @@ data:
         "templating": {
             "list": [
                 {
-                    "current": {
-                        "text": "default",
-                        "value": "default"
-                    },
-                    "hide": 0,
-                    "label": "Data Source",
-                    "name": "datasource",
-                    "options": [
-
-                    ],
-                    "query": "prometheus",
-                    "refresh": 1,
-                    "regex": "",
-                    "type": "datasource"
-                },
-                {
                     "allValue": ".+",
                     "current": {
                         "selected": true,
                         "text": "All",
                         "value": "$__all"
                     },
-                    "datasource": "$datasource",
+                    "datasource": "{{ .Values.datasource.prometheus.name }}",
                     "hide": 0,
                     "includeAll": true,
                     "label": "job",
@@ -1175,7 +1159,7 @@ data:
                         "text": "All",
                         "value": "$__all"
                     },
-                    "datasource": "$datasource",
+                    "datasource": "{{ .Values.datasource.prometheus.name }}",
                     "hide": 0,
                     "includeAll": true,
                     "label": "instance",
